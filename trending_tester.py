@@ -2,7 +2,7 @@
 """
     GitHub Action to run flake8 tests on the top 25 GitHub Trending Python repos.
 
-    Requires: pip3 install --update beautifulsoup4 requests lxml
+    Requires: pip3 install --update beautifulsoup4 requests
         If lxml is not available, html5lib should be a workable substitute
 """
 
@@ -22,7 +22,7 @@ ignore = []
 
 print(f'{sys.argv[0]} run at {dt.now():%a %b %d %H:%M:%S %Z %Y}')
 # extract the repo names of GitHub's Top 25 Trending Python list
-soup = bs4.BeautifulSoup(requests.get(url).content, 'lxml')  # or 'html5lib'
+soup = bs4.BeautifulSoup(requests.get(url).content, 'html5lib')  # or 'lxml'
 # 'python / cpython'
 repos = soup.find('ol', class_="repo-list").find_all('a', href=True)
 # 'python/cpython'
