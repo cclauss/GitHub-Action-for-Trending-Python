@@ -20,7 +20,9 @@ url = 'https://github.com/trending/python'  # GitHub Trending top 25 repos
 # these repos pass tests, have pull requests to pass tests, or are Py3 only
 ignore = []
 
-print(f'{sys.argv[0]} run at {dt.now():%a %b %d %H:%M:%S %Z %Y}')
+
+s = f'{sys.argv[0]} run at {dt.now():%a, %d %b %Y %H:%M:%S %Z}'
+print(f'{"=" * len(s)}\n{s}')
 # extract the repo names of GitHub's Top 25 Trending Python list
 soup = bs4.BeautifulSoup(requests.get(url).content, 'html5lib')  # or 'lxml'
 # 'python / cpython'
@@ -28,4 +30,4 @@ repos = soup.find('ol', class_="repo-list").find_all('a', href=True)
 # 'python/cpython'
 repos = (repo.text.strip().replace(' ', '') for repo in repos
          if '/' in repo.text and '://' not in repo.text)
-print(','.join(repos))
+print('  ' + '\n  '.join(repos))
