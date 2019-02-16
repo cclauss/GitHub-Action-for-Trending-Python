@@ -6,7 +6,7 @@ LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="orange"
 
 RUN pip install --upgrade pip
-RUN pip install beautifulsoup4 flake8 requests  # lxml
+RUN pip install beautifulsoup4 flake8 html5lib requests  # lxml
 RUN python --version ; pip --version ; echo "flake8 $(flake8 --version)"
 RUN echo "===================="
 
